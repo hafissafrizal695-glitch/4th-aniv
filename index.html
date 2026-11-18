@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Four Years — Happy 4th Anniversary Sayang ❤️</title>
+    <meta name="description" content="A romantic cinematic 4th relationship anniversary experience dedicated to Sayang.">
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Our Four Years — Happy 4th Anniversary Sayang">
+    <meta property="og:description" content="Four years, countless memories, one love. November 22, 2026.">
+    <meta property="og:image" content="assets/images/foto1.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="tailwind.config.js"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-midnight text-softwhite antialiased selection:bg-gold selection:text-midnight">
+
+    <!-- Floating Background Particles Container -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- SECTION 1: CINEMATIC OPENING -->
+    <div id="cinematic-overlay" class="fixed inset-0 z-50 bg-midnight flex flex-col items-center justify-center px-4 text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,31,48,0.25)_0%,rgba(16,16,20,0.95)_80%)]"></div>
+        <div class="relative z-10 max-w-xl mx-auto space-y-6">
+            <p class="font-romantic text-gold tracking-widest text-lg md:text-xl uppercase animate-pulse">To My Favorite Person...</p>
+            <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-softwhite">
+                Sayangkuu
+                <span class="text-gold">❤️</span>
+            </h1>
+            <p class="font-cormorant italic text-xl sm:text-2xl text-cream">
+                "Four years, countless memories, one love."
+            </p>
+            <div class="pt-2 pb-4">
+                <span class="inline-block px-4 py-1.5 rounded-full border border-gold/40 text-gold text-sm tracking-widest bg-gold/5">
+                    22.11.2026
+                </span>
+            </div>
+            <div class="pt-4">
+                <button id="open-surprise-btn" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-burgundy to-burgundy-dark border border-gold/50 text-gold-light font-semibold text-lg tracking-wider gold-glow gold-glow-hover transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer">
+                    <i class="fas fa-heart text-gold animate-bounce"></i>
+                    <span>OPEN MY SURPRISE</span>
+                    <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div id="music-player-widget" class="fixed bottom-5 right-5 z-40 hidden transition-all duration-500">
+        <div class="glass-panel px-4 py-3 rounded-full flex items-center gap-3 shadow-2xl border border-gold/30">
+            <button id="audio-toggle" class="w-10 h-10 rounded-full bg-burgundy border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-midnight transition-colors cursor-pointer" title="Play/Pause Music">
+                <i id="audio-icon" class="fas fa-music"></i>
+            </button>
+            <div class="hidden sm:flex flex-col text-left">
+                <span class="text-xs font-semibold text-gold tracking-wider">Our Soundtrack</span>
+                <span id="audio-status" class="text-[10px] text-cream/70">Playing romantic melody</span>
+            </div>
+            <div class="flex items-center gap-1.5 pl-2 border-l border-gold/20">
+                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5" class="w-16 accent-gold cursor-pointer" title="Volume">
+                <button id="mute-toggle" class="text-cream/80 hover:text-gold text-xs px-1 cursor-pointer" title="Mute">
+                    <i id="mute-icon" class="fas fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Hidden Audio Element -->
+        <audio id="bg-audio" loop preload="auto">
+            <source src="Music/ssstik.io_1794281331173.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" class="fixed bottom-5 left-5 z-40 hidden w-11 h-11 rounded-full glass-panel border border-gold/30 text-gold flex items-center justify-center shadow-lg hover:bg-burgundy transition-all duration-300 cursor-pointer" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- MAIN WEBSITE CONTAINER (Initially hidden until opened) -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 pointer-events-none">
+
+        <!-- HEADER / NAVIGATION -->
+        <header class="sticky top-0 z-30 glass-panel border-b border-gold/10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                <a href="#hero" class="flex items-center gap-2">
+                    <span class="font-heading text-xl sm:text-2xl font-bold tracking-wider text-gold">Our Four Years</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8 text-sm tracking-widest uppercase font-medium text-cream/80">
+                    <a href="#hero" class="hover:text-gold transition-colors">Home</a>
+                    <a href="#memories" class="hover:text-gold transition-colors">Memories</a>
+                    <a href="#journey" class="hover:text-gold transition-colors">Journey</a>
+                    <a href="#letter" class="hover:text-gold transition-colors">Love Letter</a>
+                    <a href="#moments" class="hover:text-gold transition-colors">Moments</a>
+                    <a href="#readme-modal-btn" onclick="openReadmeModal(event)" class="text-gold hover:underline flex items-center gap-1"><i class="fas fa-book-open text-xs"></i> Guide</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <button onclick="openReadmeModal(event)" class="md:hidden text-gold text-sm px-3 py-1.5 rounded-full border border-gold/30 hover:bg-burgundy/40">
+                        <i class="fas fa-book-open"></i> Guide
+                    </button>
+                    <a href="#final" class="hidden sm:inline-block px-4 py-2 rounded-full bg-burgundy/60 border border-gold/40 text-gold text-xs tracking-widest uppercase hover:bg-burgundy transition-all">
+                        For Sayang ❤️
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- SECTION 2: HERO / ANNIVERSARY GREETING -->
+            <section id="hero" class="relative min-h-[90vh] flex items-center justify-center px-4 py-20 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(88,31,48,0.3)_0%,transparent_70%)]"></div>
+                <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy/40 border border-gold/30 text-gold text-xs sm:text-sm tracking-widest uppercase">
+                        <i class="fas fa-crown text-gold"></i> Anniversary Celebration • 22 November 2026
+                    </div>
+                    
+                    <h2 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-softwhite leading-tight">
+                        HAPPY 4TH ANNIVERSARY
+                    </h2>
+                    
+                    <p class="font-romantic text-2xl sm:text-3xl text-gold italic">
+                        Four Years of Us
+                    </p>
+
+                    <!-- Decorative Gold Line -->
+                    <div class="flex items-center justify-center gap-4 my-6">
+                        <div class="h-[1px] w-16 sm:w-28 bg-gradient-to-r from-transparent to-gold"></div>
+                        <i class="fas fa-heart text-gold text-sm animate-pulse"></i>
+                        <div class="h-[1px] w-16 sm:w-28 bg-gradient-to-l from-transparent to-gold"></div>
+                    </div>
+
+                    <p class="font-inter text-cream/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                        Empat tahun perjalanan cinta, tawa, susah senang, dan tumbuh bersama. Terima kasih, Sayang, telah menjadi rumah paling nyaman di setiap langkahku. Setiap detik bersamamu adalah anugerah terindah yang selalu ku syukuri makasih ya yang.
+                    </p>
+
+                    <!-- Romantic Photo Placeholder in Hero -->
+                    <div class="pt-6">
+                        <div class="relative w-48 h-48 sm:w-60 sm:h-60 mx-auto rounded-2xl p-2 bg-gradient-to-b from-gold/40 to-burgundy/60 shadow-2xl gold-glow transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="w-full h-full rounded-xl overflow-hidden bg-carddark relative group">
+                                <img src="assets/images/foto1.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Our+Special+Memory';" alt="Hero Couple Photo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-transparent opacity-60"></div>
+                                <div class="absolute bottom-3 left-0 right-0 text-center">
+                                    <span class="font-romantic text-gold text-sm italic">November 2022 — November 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scroll down indicator -->
+                    <div class="pt-12">
+                        <a href="#memories" class="inline-flex flex-col items-center text-cream/60 hover:text-gold transition-colors">
+                            <span class="text-xs tracking-widest uppercase mb-2">Explore Our Story</span>
+                            <i class="fas fa-chevron-down animate-bounce text-gold"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: OUR MEMORIES (PHOTO GALLERY) -->
+            <section id="memories" class="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+                <div class="text-center space-y-4 mb-16">
+                    <span class="font-romantic text-gold tracking-widest text-lg uppercase">Visual Diary</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-softwhite">Our Precious Memories</h2>
+                    <p class="text-cream/70 max-w-xl mx-auto text-sm sm:text-base">
+                        Setiap foto menyimpan cerita, senyuman, dan kebahagiaan yang kita ukir bersama selama empat tahun ini. Klik foto untuk memperbesar.
+                    </p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Photo 1 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group" onclick="openLightbox(0)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto1.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+1';" alt="Our Memory 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+             
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group sm:translate-y-4" onclick="openLightbox(1)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto2.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+2';" alt="Our Memory 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group" onclick="openLightbox(2)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto3.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+3';" alt="Our Memory 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group" onclick="openLightbox(3)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto4.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+4';" alt="Our Memory 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Photo 5 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group sm:translate-y-4" onclick="openLightbox(4)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto5.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+5';" alt="Our Memory 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <!-- Photo 6 -->
+                    <div class="polaroid bg-carddark p-4 rounded-xl border border-gold/20 shadow-xl cursor-pointer group" onclick="openLightbox(5)">
+                        <div class="aspect-[4/5] rounded-lg overflow-hidden relative mb-4 bg-midnight">
+                            <img src="assets/images/foto6.jpg" onerror="this.src='https://placehold.co/600x750/18181f/C9A36B?text=Memory+6';" alt="Our Memory 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-burgundy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-full glass-panel text-gold text-xs tracking-widest uppercase border border-gold/40">
+                                    <i class="fas fa-expand mr-1"></i> View
+                                </span>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIGHTBOX MODAL -->
+            <div id="lightbox" class="fixed inset-0 z-50 bg-midnight/95 backdrop-blur-md hidden items-center justify-center p-4">
+                <button onclick="closeLightbox()" class="absolute top-6 right-6 text-gold text-3xl hover:text-softwhite transition-colors cursor-pointer z-10 w-12 h-12 rounded-full bg-burgundy/40 flex items-center justify-center border border-gold/30">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button onclick="prevPhoto()" class="absolute left-4 sm:left-10 text-gold text-2xl hover:text-softwhite transition-colors cursor-pointer z-10 w-12 h-12 rounded-full bg-burgundy/40 flex items-center justify-center border border-gold/30">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="nextPhoto()" class="absolute right-4 sm:right-10 text-gold text-2xl hover:text-softwhite transition-colors cursor-pointer z-10 w-12 h-12 rounded-full bg-burgundy/40 flex items-center justify-center border border-gold/30">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="max-w-4xl max-h-[85vh] text-center flex flex-col items-center">
+                    <img id="lightbox-img" src="" alt="Enlarged Memory" class="max-h-[70vh] max-w-full rounded-xl object-contain border border-gold/30 shadow-2xl mb-4">
+                    <p id="lightbox-caption" class="font-romantic text-2xl text-gold italic"></p>
+                    <p id="lightbox-subcaption" class="text-xs text-cream/70 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- SECTION 4: OUR JOURNEY (TIMELINE) -->
+            <section id="journey" class="py-24 px-4 sm:px-6 max-w-5xl mx-auto">
+                <div class="text-center space-y-4 mb-20">
+                    <span class="font-romantic text-gold tracking-widest text-lg uppercase">Chronicles of Love</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-softwhite">Our Four-Year Journey</h2>
+                    <p class="text-cream/70 max-w-xl mx-auto text-sm sm:text-base">
+                        Setiap tahun membawa warna baru, pendewasaan, dan cinta yang semakin mendalam di antara kita.
+                    </p>
+                </div>
+
+                <div class="relative border-l-2 border-gold/30 ml-4 sm:ml-auto sm:max-w-3xl space-y-16 pl-8 sm:pl-12">
+                    <!-- Milestone 1 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] sm:-left-[57px] top-0 w-8 h-8 rounded-full bg-burgundy border-2 border-gold flex items-center justify-center text-gold text-xs shadow-lg">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-xl transition-all duration-300 hover:border-gold/50">
+                            <span class="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider mb-3">
+                                Year 01 • 2022 - 2023
+                            </span>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-softwhite mb-3">Our First Year</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                                <div class="md:col-span-1 rounded-lg overflow-hidden aspect-square border border-gold/20 bg-midnight">
+                                    <img src="assets/images/foto1.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Year+1';" alt="Year 1" class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:col-span-2 space-y-3">
+                                    <p class="font-inter text-cream/90 text-sm sm:text-base leading-relaxed">
+                                        Awal mula kita merajut kisah. Beradaptasi dengan kepribadian masing-masing, berbagi cerita kecil di setiap penghujung hari, dan menyadari bahwa kehadiran satu sama lain membawa kenyamanan yang luar biasa.
+                                    </p>
+                                    <p class="font-romantic text-gold text-lg italic">"Hari-hari pertama yang penuh debar dan senyum manis."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] sm:-left-[57px] top-0 w-8 h-8 rounded-full bg-burgundy border-2 border-gold flex items-center justify-center text-gold text-xs shadow-lg">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-xl transition-all duration-300 hover:border-gold/50">
+                            <span class="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider mb-3">
+                                Year 02 • 2023 - 2024
+                            </span>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-softwhite mb-3">Our Second Year</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                                <div class="md:col-span-1 rounded-lg overflow-hidden aspect-square border border-gold/20 bg-midnight">
+                                    <img src="assets/images/foto2.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Year+2';" alt="Year 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:col-span-2 space-y-3">
+                                    <p class="font-inter text-cream/90 text-sm sm:text-base leading-relaxed">
+                                        Hubungan kita semakin erat. Kita mulai melewati berbagai perbedaan, belajar saling memahami saat ada kesalahpahaman, dan merayakan setiap pencapaian kecil bersama dengan penuh rasa syukur.
+                                    </p>
+                                    <p class="font-romantic text-gold text-lg italic">"Tumbuh bersama dalam suka dan duka."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] sm:-left-[57px] top-0 w-8 h-8 rounded-full bg-burgundy border-2 border-gold flex items-center justify-center text-gold text-xs shadow-lg">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-xl transition-all duration-300 hover:border-gold/50">
+                            <span class="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider mb-3">
+                                Year 03 • 2024 - 2025
+                            </span>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-softwhite mb-3">Our Third Year</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                                <div class="md:col-span-1 rounded-lg overflow-hidden aspect-square border border-gold/20 bg-midnight">
+                                    <img src="assets/images/foto3.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Year+3';" alt="Year 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:col-span-2 space-y-3">
+                                    <p class="font-inter text-cream/90 text-sm sm:text-base leading-relaxed">
+                                        Di tahun ketiga, kita semakin dewasa. Rencana-rencana masa depan mulai terukir dalam obrolan malam kita. Kepercayaan di antara kita menjadi fondasi terkuat yang tak tergoyahkan.
+                                    </p>
+                                    <p class="font-romantic text-gold text-lg italic">"Saling menggenggam erat menghadapi dunia."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] sm:-left-[57px] top-0 w-8 h-8 rounded-full bg-burgundy border-2 border-gold flex items-center justify-center text-gold text-xs shadow-lg">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-xl transition-all duration-300 hover:border-gold/50">
+                            <span class="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider mb-3">
+                                Year 04 • 2025 - 2026
+                            </span>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-softwhite mb-3">Our Fourth Year</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                                <div class="md:col-span-1 rounded-lg overflow-hidden aspect-square border border-gold/20 bg-midnight">
+                                    <img src="assets/images/foto4.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Year+4';" alt="Year 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="md:col-span-2 space-y-3">
+                                    <p class="font-inter text-cream/90 text-sm sm:text-base leading-relaxed">
+                                        Empat tahun sudah kita bersama. Rasanya begitu cepat namun sarat akan makna. Kamu bukan lagi sekadar kekasih, melainkan belahan jiwa dan rumah tempat aku selalu ingin pulang.
+                                    </p>
+                                    <p class="font-romantic text-gold text-lg italic">"Empat tahun penuh cinta, selamanya untuk selamanya."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: A LETTER FOR YOU (INTERACTIVE ENVELOPE) -->
+            <section id="letter" class="py-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
+                <div class="space-y-4 mb-12">
+                    <span class="font-romantic text-gold tracking-widest text-lg uppercase">From My Heart</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-softwhite">A Little Letter For You</h2>
+                    <p class="text-cream/70 max-w-lg mx-auto text-sm sm:text-base">
+                        Sebuah pesan khusus yang kutulis dari lubuk hatiku yang paling dalam untukmu, Sayang.
+                    </p>
+                </div>
+
+                <!-- Envelope Wrapper -->
+                <div id="envelope-container" class="max-w-xl mx-auto">
+                    <div id="envelope" class="relative bg-carddark border-2 border-gold/40 rounded-2xl p-8 shadow-2xl glass-panel transition-all duration-700">
+                        <!-- Envelope Front Preview -->
+                        <div id="envelope-closed" class="py-12 space-y-6">
+                            <div class="w-20 h-20 mx-auto rounded-full bg-burgundy border-2 border-gold flex items-center justify-center text-gold text-3xl gold-glow animate-pulse">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl text-softwhite">A little letter for you...</h3>
+                            <p class="text-cream/70 text-sm italic font-romantic">Klik tombol di bawah untuk membuka amplop spesial ini.</p>
+                            <button id="open-letter-btn" onclick="openLoveLetter()" class="px-8 py-3 rounded-full bg-burgundy border border-gold/50 text-gold font-semibold tracking-wider hover:bg-gold hover:text-midnight transition-all duration-300 shadow-lg cursor-pointer">
+                                OPEN MY LETTER ❤️
+                            </button>
+                        </div>
+
+                        <!-- Letter Content (Hidden Initially) -->
+                        <div id="letter-content" class="hidden text-left space-y-6 py-4">
+                            <div class="flex items-center justify-between border-b border-gold/20 pb-4">
+                                <span class="font-romantic text-gold text-xl italic">Untuk Sayangku tercinta,</span>
+                                <span class="text-xs text-cream/60">22 November 2026</span>
+                            </div>
+
+                            <div id="typing-text" class="font-inter text-cream/90 text-sm sm:text-base leading-relaxed space-y-4 min-h-[220px]">
+                                <!-- JavaScript Typewriter will inject here -->
+                            </div>
+
+                            <div class="pt-4 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div>
+                                    <p class="font-romantic text-gold text-lg italic">Selamanya milikmu,</p>
+                                    <p class="font-heading font-bold text-softwhite">Pacarmu yang mencintaimu</p>
+                                </div>
+                                <button onclick="resetLetter()" class="text-xs text-gold/80 hover:text-gold underline cursor-pointer">
+                                    <i class="fas fa-redo mr-1"></i> Tutup Kembali Amplop
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: OUR FAVORITE MOMENTS -->
+            <section id="moments" class="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+                <div class="text-center space-y-4 mb-16">
+                    <span class="font-romantic text-gold tracking-widest text-lg uppercase">Cherished Reflections</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-softwhite">Our Favorite Moments</h2>
+                    <p class="text-cream/70 max-w-xl mx-auto text-sm sm:text-base">
+                        Klik masing-masing kartu untuk membaca kenangan dan alasan di balik perasaan ini.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass-panel p-8 rounded-2xl border border-gold/20 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-gold/60 group">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-burgundy border border-gold/40 flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-heart-pulse"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-softwhite mb-3">The Moment I Fell for You</h3>
+                            <p id="moment-desc-1" class="text-cream/80 text-sm leading-relaxed mb-6">
+                                Saat pertama kali kita tertawa bersama tanpa canggung. Aku tahu ada sesuatu yang berbeda darimu—seseorang yang membuat duniamu terasa jauh lebih hangat.
+                            </p>
+                        </div>
+                        <button onclick="toggleMoment(1)" class="w-full py-2.5 rounded-xl border border-gold/30 text-gold text-xs tracking-wider uppercase hover:bg-burgundy transition-colors cursor-pointer">
+                            <span id="moment-btn-1">Baca Selengkapnya</span>
+                        </button>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-panel p-8 rounded-2xl border border-gold/20 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-gold/60 group">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-burgundy border border-gold/40 flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-softwhite mb-3">My Favorite Memory</h3>
+                            <p id="moment-desc-2" class="text-cream/80 text-sm leading-relaxed mb-6">
+                                Setiap momen saat kita menghabiskan waktu berdua dalam kesunyian yang menenangkan. Tanpa kata pun, kita tahu bahwa kita saling melengkapi dan merasa aman dalam dekap satu sama lain.
+                            </p>
+                        </div>
+                        <button onclick="toggleMoment(2)" class="w-full py-2.5 rounded-xl border border-gold/30 text-gold text-xs tracking-wider uppercase hover:bg-burgundy transition-colors cursor-pointer">
+                            <span id="moment-btn-2">Baca Selengkapnya</span>
+                        </button>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-panel p-8 rounded-2xl border border-gold/20 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-gold/60 group">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-burgundy border border-gold/40 flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-softwhite mb-3">Why I Still Choose You</h3>
+                            <p id="moment-desc-3" class="text-cream/80 text-sm leading-relaxed mb-6">
+                                Karena bersamamu, aku tidak perlu berpura-pura menjadi orang lain. Kamu menerima kekuranganku, merayakan kelebihanku, dan selalu menjadi alasan di balik senyumku setiap hari.
+                            </p>
+                        </div>
+                        <button onclick="toggleMoment(3)" class="w-full py-2.5 rounded-xl border border-gold/30 text-gold text-xs tracking-wider uppercase hover:bg-burgundy transition-colors cursor-pointer">
+                            <span id="moment-btn-3">Baca Selengkapnya</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: FINAL SURPRISE -->
+            <section id="final" class="relative py-28 px-4 sm:px-6 text-center overflow-hidden burgundy-gradient border-t border-gold/20">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(201,163,107,0.15)_0%,transparent_70%)]"></div>
+                <div class="relative z-10 max-w-3xl mx-auto space-y-8">
+                    <p class="font-romantic text-gold tracking-widest text-xl uppercase">Four Years Down...</p>
+                    <h2 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold text-softwhite">
+                        And Forever To Go.
+                    </h2>
+
+                    <!-- Final Photo Placeholder -->
+                    <div class="w-40 h-40 sm:w-52 sm:h-52 mx-auto rounded-full p-2 bg-gradient-to-tr from-gold to-burgundy shadow-2xl gold-glow my-6">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-midnight relative">
+                            <img src="assets/images/foto6.jpg" onerror="this.src='https://placehold.co/400x400/18181f/C9A36B?text=Forever';" alt="Final Couple Photo" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <p class="font-inter text-cream/90 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+                        "Terima kasih sudah menjadi bagian terindah dalam perjalanan hidupku. Dari semua hal yang terjadi selama empat tahun ini, aku masih ingin memilih kamu, hari ini, besok, dan seterusnya."
+                    </p>
+
+                    <div class="pt-4">
+                        <span class="font-romantic text-3xl sm:text-4xl text-gold italic block">
+                            Happy 4th Anniversary, Sayang ❤️
+                        </span>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="#hero" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold/10 border border-gold/40 text-gold hover:bg-gold hover:text-midnight transition-all text-sm tracking-wider uppercase">
+                            <i class="fas fa-arrow-up"></i> Kembali ke Atas
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="py-8 px-4 text-center border-t border-gold/10 text-xs text-cream/50 bg-midnight">
+            <p>Made with endless love for Sayang • Our 4th Anniversary (22 November 2026)</p>
+        </footer>
+    </div>
+
+    <!-- README / GUIDE MODAL -->
+    <div id="readme-modal" class="fixed inset-0 z-50 bg-midnight/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl border border-gold/40 p-6 sm:p-8 relative shadow-2xl text-left">
+            <button onclick="closeReadmeModal()" class="absolute top-6 right-6 text-gold text-xl hover:text-softwhite cursor-pointer w-10 h-10 rounded-full bg-burgundy/40 flex items-center justify-center border border-gold/30">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="font-heading text-2xl font-bold text-gold mb-4 flex items-center gap-2">
+                <i class="fas fa-book-open"></i> Project Guide & Customization
+            </h3>
+            <div class="space-y-4 text-sm text-cream/90 font-inter leading-relaxed">
+                <p>Halo! Website ini dirancang khusus sebagai hadiah ulang tahun hubungan ke-4 untuk Sayang. Berikut panduan ringkas cara mengaturnya:</p>
+                
+                <div class="space-y-2">
+                    <h4 class="font-semibold text-gold">1. Struktur Folder (Sesuai Permintaan)</h4>
+                    <pre class="bg-midnight p-3 rounded-lg text-xs text-gold/90 overflow-x-auto border border-gold/20 font-mono">
+anniversary-website/
+├── index.html (File utama yang berisi seluruh kode)
+├── assets/
+│   ├── images/ (foto1.jpg - foto6.jpg)
+│   └── music/ (romantic.mp3)
+└── README.md</pre>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-semibold text-gold">2. Cara Memasukkan Foto</h4>
+                    <p>Simpan 6 foto terbaik kalian di folder <code class="text-gold">assets/images/</code> dengan nama <code class="text-gold">foto1.jpg</code> sampai <code class="text-gold">foto6.jpg</code>. Jika foto belum ada, website otomatis menampilkan placeholder elegan.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-semibold text-gold">3. Cara Memasukkan Musik Latar</h4>
+                    <p>Letakkan file musik format MP3 Anda di <code class="text-gold">assets/music/romantic.mp3</code>. Ketika tombol "OPEN MY SURPRISE" ditekan, musik akan mulai dimainkan dengan mulus.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-semibold text-gold">4. Cara Mengubah Surat Cinta</h4>
+                    <p>Buka bagian script JavaScript di file ini, cari variabel <code class="text-gold">loveLetterText</code>, dan Anda bisa langsung mengubah kalimatnya sesuai keinginan.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-semibold text-gold">5. Cara Deploy ke GitHub Pages / Vercel</h4>
+                    <p>Upload seluruh folder ke repository GitHub, lalu aktifkan GitHub Pages di pengaturan repository, atau import langsung ke Vercel untuk hosting instan gratis.</p>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <button onclick="closeReadmeModal()" class="px-6 py-2.5 rounded-full bg-burgundy border border-gold/40 text-gold text-xs tracking-wider uppercase hover:bg-gold hover:text-midnight transition-all">
+                    Mengerti, Tutup Panduan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+        <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* Custom Luxury Styling & Animations */
+        body {
+            background-color: #101014;
+            color: #F8F4F0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-romantic {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101014;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #581F30;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C9A36B;
+        }
+
+        /* Floating Hearts & Particles */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Cinematic Opening Overlay */
+        #cinematic-overlay {
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Glow Effects */
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(201, 163, 107, 0.25);
+        }
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 35px rgba(201, 163, 107, 0.45);
+        }
+        .burgundy-gradient {
+            background: linear-gradient(135deg, #581F30 0%, #101014 100%);
+        }
+
+        /* Polaroid Photo Rotation */
+        .polaroid {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .polaroid:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5), 0 0 20px rgba(201, 163, 107, 0.2);
+            z-index: 20;
+        }
+
+        /* Envelope Animation */
+        .envelope-flap {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top;
+        }
+        .envelope-open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 10;
+        }
+        .letter-card {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity 0.8s ease 0.3s;
+        }
+
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(24, 24, 31, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 163, 107, 0.15);
+        }
